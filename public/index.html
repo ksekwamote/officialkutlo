@@ -281,45 +281,50 @@
 </nav>
 <!-- Section 1: Hero -->
 <header class="relative min-h-screen flex items-center overflow-hidden bg-surface-dim">
-    <div class="absolute inset-0 z-0 flex justify-end">
-        <!-- I added 'pt-20 md:pt-40' below to physically push the content down -->
-        <div class="relative w-full md:w-3/4 h-full pt-5 md:pt-24">
-            
-            <img alt="Kutlo Portrait" 
-                 class="w-full h-full object-cover object-top" 
-                 src="assets/kutlo-hero-portrait.png"/>
-            
-            <!-- Gradients stay on top to keep the fade smooth -->
-            <div class="absolute inset-0 hero-gradient"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-        </div>
-    </div>
+  <div class="absolute inset-0 z-0 flex justify-end">
+    <div class="relative w-full md:w-3/4 h-full pt-5 md:pt-24">
+      
+      <img
+        alt="Kutlo Portrait"
+        class="w-full h-full object-cover object-top"
+        src="assets/kutlo-hero-portrait.png"
+      />
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full pt-28 md:pt-20">
-        <div class="max-w-2xl text-center md:text-left mx-auto md:mx-0">
-            <h1 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.85] tracking-tight text-white mb-4 relative">
-                THIS IS MORE THAN SOUND. <br/> THIS IS ENCOUNTER.
-                <span class="block text-primary-container italic font-accent-script absolute -bottom-8 left-0 md:left-48 text-4xl sm:text-6xl md:text-8xl lowercase tracking-normal z-20 opacity-90"></span>
-            </h1>
-            <p class="mt-16 text-white/70 font-body-lg max-w-md leading-relaxed tracking-wide mx-auto md:mx-0">
-                Music born from stillness. Words rooted in prayer. <br/>A life committed to His presence.
-            </p>
-            
-            <div class="mt-12 flex flex-wrap items-center justify-center md:justify-start gap-8">
-                <a href="https://distrokid.com/hyperfollow/kutlo1/prayers-for-november-2025/" 
-                   target="_blank"
-                   class="px-10 py-4 border border-primary-container text-primary-container font-label-sm uppercase tracking-[0.3em] hover:bg-primary-container hover:text-on-secondary transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0.15)] inline-block">
-                    LISTEN NOW
-                </a>
-                
-                <a class="font-label-sm uppercase tracking-[0.3em] text-white/40 hover:text-primary-container transition-all duration-300 flex items-center gap-2" 
-                   href="https://www.tiktok.com/@officialkutlo" 
-                   target="_blank">
-                    WATCH ON TIKTOK <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </a>
-            </div>
-        </div>
+      <!-- Softer overlays: keeps image visible, protects text area only -->
+      <div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 md:via-background/25 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
     </div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full pt-28 md:pt-20">
+    <div class="max-w-2xl text-center md:text-left mx-auto md:mx-0">
+      <h1 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.85] tracking-tight text-white mb-4 relative"> THIS IS MORE THAN SOUND. <br/> THIS IS ENCOUNTER. <span class="block text-primary-container italic font-accent-script absolute -bottom-8 left-0 md:left-48 text-4xl sm:text-6xl md:text-8xl lowercase tracking-normal z-20 opacity-90"></span> </h1>
+
+      <p class="mt-16 text-white/70 font-body-lg max-w-md leading-relaxed tracking-wide mx-auto md:mx-0">
+        Music born from stillness. Words rooted in prayer. <br />
+        A life committed to His presence.
+      </p>
+
+      <div class="mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-5 sm:gap-8">
+        <a
+          href="https://distrokid.com/hyperfollow/kutlo1/prayers-for-november-2025/"
+          target="_blank"
+          class="w-full sm:w-auto text-center px-10 py-4 border border-primary-container text-primary-container font-label-sm uppercase tracking-[0.3em] hover:bg-primary-container hover:text-on-secondary transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0.15)] inline-block"
+        >
+          LISTEN NOW
+        </a>
+
+        <a
+          class="font-label-sm uppercase tracking-[0.3em] text-white/40 hover:text-primary-container transition-all duration-300 flex items-center justify-center gap-2"
+          href="https://www.tiktok.com/@officialkutlo"
+          target="_blank"
+        >
+          WATCH ON TIKTOK
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
 <!-- Section 2: Phone Collage -->
 <section class="py-20 md:py-section-gap bg-background overflow-hidden">
