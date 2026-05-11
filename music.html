@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BES5K3HT70"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BES5K3HT70');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A0A0A">
+  <title>Music | Kutlo</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            background: "#0A0A0A",
+            surface: "#121414",
+            "surface-dim": "#121414",
+            "surface-container": "#1e2020",
+            "surface-container-low": "#1a1c1c",
+            "primary-container": "#d4af37",
+            primary: "#f2ca50",
+            "on-primary-container": "#241a00",
+            "on-background": "#e2e2e2",
+            "on-surface": "#e2e2e2",
+          },
+          fontFamily: {
+            headline: ["Epilogue", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            bebas: ["Bebas Neue", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      background: #0A0A0A;
+      color: #e2e2e2;
+    }
+
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,.08) 0 1px, transparent 1px);
+      background-size: 4px 4px;
+    }
+
+    .glass-card {
+      background: rgba(18, 18, 18, 0.45);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .gold-line {
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    }
+
+    .hero-text {
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+    }
+
+    .release-card:hover img {
+      transform: scale(1.06);
+      filter: brightness(1);
+    }
+  </style>
+</head>
+
+<body class="font-body bg-background text-on-background selection:bg-primary-container selection:text-black">
+  <div class="film-grain"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 md:px-16 py-6 flex items-center justify-between">
+      <a href="index.html" class="text-sm md:text-lg font-light tracking-[0.3em] text-primary-container uppercase">
+        KUTLO
+      </a>
+
+      <div class="hidden md:flex gap-10">
+        <a href="index.html" class="text-[10px] tracking-[0.25em] uppercase text-white/50 hover:text-primary-container transition">Home</a>
+        <a href="about.html" class="text-[10px] tracking-[0.25em] uppercase text-white/50 hover:text-primary-container transition">About</a>
+        <a href="music.html" class="text-[10px] tracking-[0.25em] uppercase text-primary-container transition">Music</a>
+        <a href="index.html#contacts" class="text-[10px] tracking-[0.25em] uppercase text-white/50 hover:text-primary-container transition">Contact</a>
+      </div>
+
+      <a href="index.html#contacts" class="text-[10px] tracking-[0.25em] uppercase text-primary-container border border-primary-container/30 px-5 py-2 hover:bg-primary-container hover:text-black transition">
+        Booking
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative min-h-screen flex items-center overflow-hidden pt-32">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/30 z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40 z-10"></div>
+
+      <!-- Replace this with the final I'm Not A Beggar artwork -->
+      <img
+        src="assets/im-not-a-beggar-cover.jpg"
+        alt="I'm Not A Beggar cover placeholder"
+        class="absolute right-0 top-0 w-full md:w-2/3 h-full object-cover opacity-35 md:opacity-55"
+      />
+    </div>
+
+    <div class="relative z-20 max-w-7xl mx-auto px-6 md:px-16 w-full">
+      <div class="max-w-4xl">
+        <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase mb-8">
+          Music Catalogue
+        </p>
+
+        <h1 class="font-bebas hero-text text-7xl md:text-[150px] text-white mb-10">
+          SONGS BORN <br />
+          FROM PRAYER.
+        </h1>
+
+        <p class="max-w-2xl text-white/65 text-lg md:text-xl leading-relaxed">
+          A collection of worship, declarations, prayer, and sound — carrying the same calling:
+          to reach, to remind, and to restore.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- FEATURED UPCOMING RELEASE -->
+    <section class="relative py-28 md:py-40 bg-background overflow-hidden">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary-container/10 blur-[120px] rounded-full"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16">
+        <div class="grid md:grid-cols-12 gap-16 items-center">
+          <div class="md:col-span-6 relative">
+            <div class="absolute -inset-4 border border-primary-container/10"></div>
+            <img
+              src="assets/beggar.png"
+              alt="I'm Not A Beggar cover art placeholder"
+              class="relative z-10 w-full aspect-square object-cover shadow-2xl brightness-90"
+            />
+          </div>
+
+          <div class="md:col-span-6 space-y-8">
+            <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase">
+              Upcoming Release
+            </p>
+
+            <h2 class="font-headline text-5xl md:text-7xl font-bold leading-none text-white">
+              I’M NOT <br />
+              A BEGGAR
+            </h2>
+
+            <div class="space-y-6 text-white/60 text-lg leading-relaxed">
+              <p>
+                A declaration of identity — a sound that speaks to the difference between
+                appearance and truth, scars and victory, need and sonship.
+              </p>
+
+              <p>
+                “I’m Not A Beggar” carries the message that in Christ, we are not pleading
+                from a place of lack. We have found a treasure, a Father, a Friend, and a life in Him.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-5 pt-4">
+              <a
+                href="https://distrokid.com/hyperfollow/kutlo1/im-not-a-beggar"
+                class="bg-primary-container text-black px-9 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white transition flex items-center gap-3"
+              >
+                <span class="material-symbols-outlined text-[18px]">music_note</span>
+                Spotify Coming Soon
+              </a>
+
+              <a
+                href="https://distrokid.com/hyperfollow/kutlo1/im-not-a-beggar"
+                class="border border-white/10 text-white px-9 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white/5 transition"
+              >
+                Apple Music Coming Soon
+              </a>
+
+              <a
+                href="https://distrokid.com/hyperfollow/kutlo1/im-not-a-beggar"
+                class="border border-white/10 text-white px-9 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white/5 transition"
+              >
+                YouTube Coming Soon
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELEASES GRID -->
+    <section class="py-28 md:py-40 bg-surface-dim">
+      <div class="max-w-7xl mx-auto px-6 md:px-16">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
+          <div>
+            <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase mb-6">
+              Releases
+            </p>
+
+            <h2 class="font-headline text-5xl md:text-7xl font-bold leading-none text-white">
+              THE SOUND <br />
+              SO FAR.
+            </h2>
+          </div>
+
+          <p class="text-white/50 max-w-md leading-relaxed">
+            From declarations to worship records, each release carries a piece of the journey:
+            prayer, identity, victory, and the name of Jesus.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- The Prayer Closet -->
+          <article class="release-card glass-card overflow-hidden group">
+            <div class="overflow-hidden">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/86/40/58/864058b5-1e55-bdcf-4a83-8d9ea814d9cc/artwork.jpg/1200x1200bb.jpg"
+                alt="The Prayer Closet EP artwork"
+                class="w-full aspect-square object-cover brightness-90 transition-all duration-700"
+              />
+            </div>
+
+            <div class="p-7 space-y-5">
+              <p class="text-primary-container text-[10px] tracking-[0.35em] uppercase">
+                Prayer EP · 2025
+              </p>
+
+              <h3 class="text-white text-2xl font-headline font-semibold">
+                The Prayer Closet - EP
+              </h3>
+
+              <p class="text-white/55 leading-relaxed">
+                A short, intimate collection of prayers and declarations for the secret place —
+                moments of stillness, warfare, healing, and surrender.
+              </p>
+
+              <div class="flex flex-wrap gap-3">
+                <a href="https://music.apple.com/us/album/the-prayer-closet-ep/1860297428" target="_blank" rel="noopener noreferrer" class="text-[10px] tracking-[0.25em] uppercase text-primary-container border border-primary-container/30 px-4 py-3 hover:bg-primary-container hover:text-black transition">
+                  Apple Music
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Name Above Names -->
+          <article class="release-card glass-card overflow-hidden group">
+            <div class="overflow-hidden">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6b/0c/23/6b0c2383-5d07-c322-f5f2-d12d651bf747/artwork.jpg/1200x1200bb.jpg"
+                alt="Name Above Names artwork"
+                class="w-full aspect-square object-cover brightness-90 transition-all duration-700"
+              />
+            </div>
+
+            <div class="p-7 space-y-5">
+              <p class="text-primary-container text-[10px] tracking-[0.35em] uppercase">
+                Single
+              </p>
+
+              <h3 class="text-white text-2xl font-headline font-semibold">
+                Name Above Names
+              </h3>
+
+              <p class="text-white/55 leading-relaxed">
+                A worship declaration centered on the supremacy, wonder, and authority
+                of the name of Jesus.
+              </p>
+
+              <div class="flex flex-wrap gap-3">
+                <a href="https://music.apple.com/us/album/name-above-names-single/1803877254" target="_blank" rel="noopener noreferrer" class="text-[10px] tracking-[0.25em] uppercase text-primary-container border border-primary-container/30 px-4 py-3 hover:bg-primary-container hover:text-black transition">
+                  Apple Music
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Galalejega -->
+          <article class="release-card glass-card overflow-hidden group">
+            <div class="overflow-hidden">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/34/04/08/340408eb-c5d2-3ece-d3b3-4c49c47f89de/artwork.jpg/1200x1200bb.jpg"
+                alt="Galalejega artwork"
+                class="w-full aspect-square object-cover brightness-90 transition-all duration-700"
+              />
+            </div>
+
+            <div class="p-7 space-y-5">
+              <p class="text-primary-container text-[10px] tracking-[0.35em] uppercase">
+                Single
+              </p>
+
+              <h3 class="text-white text-2xl font-headline font-semibold">
+                Galalejega
+              </h3>
+
+              <p class="text-white/55 leading-relaxed">
+                A worship collaboration carrying the spirit of praise, testimony,
+                and reverence.
+              </p>
+
+              <div class="flex flex-wrap gap-3">
+                <a href="https://music.apple.com/us/album/galalejega-feat-kutlo-divba-single/1832867680" target="_blank" rel="noopener noreferrer" class="text-[10px] tracking-[0.25em] uppercase text-primary-container border border-primary-container/30 px-4 py-3 hover:bg-primary-container hover:text-black transition">
+                  Apple Music
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dibetsa -->
+          <article class="release-card glass-card overflow-hidden group">
+            <div class="overflow-hidden">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/69/74/5f/69745f8e-a8e2-4238-0fab-03e5d71edfb0/artwork.jpg/1200x1200bb.jpg"
+                alt="Dibetsa artwork"
+                class="w-full aspect-square object-cover brightness-90 transition-all duration-700"
+              />
+            </div>
+
+            <div class="p-7 space-y-5">
+              <p class="text-primary-container text-[10px] tracking-[0.35em] uppercase">
+                Single
+              </p>
+
+              <h3 class="text-white text-2xl font-headline font-semibold">
+                Dibetsa
+              </h3>
+
+              <p class="text-white/55 leading-relaxed">
+                A declaration around spiritual warfare — standing firm in authority,
+                victory, and confidence in Christ.
+              </p>
+
+              <div class="flex flex-wrap gap-3">
+                <a href="https://music.apple.com/us/album/dibetsa-feat-kutlo-official-single/1756822802" target="_blank" rel="noopener noreferrer" class="text-[10px] tracking-[0.25em] uppercase text-primary-container border border-primary-container/30 px-4 py-3 hover:bg-primary-container hover:text-black transition">
+                  Apple Music
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PRAYER CLOSET TRACKLIST -->
+    <section class="py-28 md:py-40 bg-background">
+      <div class="max-w-7xl mx-auto px-6 md:px-16">
+        <div class="grid md:grid-cols-12 gap-16 items-start mb-16">
+          <div class="md:col-span-5">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/86/40/58/864058b5-1e55-bdcf-4a83-8d9ea814d9cc/artwork.jpg/1200x1200bb.jpg"
+              alt="The Prayer Closet EP artwork"
+              class="w-full aspect-square object-cover shadow-2xl"
+            />
+          </div>
+
+          <div class="md:col-span-7 space-y-8">
+            <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase">
+              Featured EP
+            </p>
+
+            <h2 class="font-headline text-5xl md:text-7xl font-bold leading-none text-white">
+              THE PRAYER <br />
+              CLOSET
+            </h2>
+
+            <p class="text-white/60 text-lg leading-relaxed max-w-2xl">
+              Six short prayers and declarations — created for the moments when words are hard,
+              but the heart still needs to reach for God.
+            </p>
+
+            <a
+              href="https://music.apple.com/us/album/the-prayer-closet-ep/1860297428"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex bg-primary-container text-black px-9 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white transition items-center gap-3"
+            >
+              <span class="material-symbols-outlined text-[18px]">play_arrow</span>
+              Listen on Apple Music
+            </a>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-lg overflow-hidden border border-white/5">
+          <table class="w-full text-left">
+            <thead class="border-b border-white/5 bg-white/5">
+              <tr>
+                <th class="px-6 md:px-8 py-4 text-white/40 text-[10px] tracking-widest uppercase">#</th>
+                <th class="px-6 md:px-8 py-4 text-white/40 text-[10px] tracking-widest uppercase">Title</th>
+                <th class="hidden md:table-cell px-8 py-4 text-white/40 text-[10px] tracking-widest uppercase text-right">Duration</th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-white/5">
+              <tr class="group hover:bg-white/5 transition-colors cursor-pointer" onclick="window.open('https://music.apple.com/us/song/position-me-lord/1860297429', '_blank')">
+                <td class="px-6 md:px-8 py-5 text-white/40 group-hover:text-primary-container">1</td>
+                <td class="px-6 md:px-8 py-5 text-white font-medium">Position Me Lord</td>
+                <td class="hidden md:table-cell px-8 py-5 text-white/40 text-right">01:35</td>
+              </tr>
+
+              <tr class="group hover:bg-white/5 transition-colors cursor-pointer" onclick="window.open('https://music.apple.com/us/song/remember-me-lord/1860297430', '_blank')">
+                <td class="px-6 md:px-8 py-5 text-white/40 group-hover:text-primary-container">2</td>
+                <td class="px-6 md:px-8 py-5 text-white font-medium">Remember Me Lord</td>
+                <td class="hidden md:table-cell px-8 py-5 text-white/40 text-right">01:54</td>
+              </tr>
+
+              <tr class="group hover:bg-white/5 transition-colors cursor-pointer" onclick="window.open('https://music.apple.com/us/song/i-need-a-miracle/1860297431', '_blank')">
+                <td class="px-6 md:px-8 py-5 text-white/40 group-hover:text-primary-container">3</td>
+                <td class="px-6 md:px-8 py-5 text-white font-medium">I Need A Miracle</td>
+                <td class="hidden md:table-cell px-8 py-5 text-white/40 text-right">01:42</td>
+              </tr>
+
+              <tr class="group hover:bg-white/5 transition-colors cursor-pointer" onclick="window.open('https://music.apple.com/us/song/put-my-enemies-to-shame/1860297432', '_blank')">
+                <td class="px-6 md:px-8 py-5 text-white/40 group-hover:text-primary-container">4</td>
+                <td class="px-6 md:px-8 py-5 text-white font-medium">Put My Enemies To Shame</td>
+                <td class="hidden md:table-cell px-8 py-5 text-white/40 text-right">01:53</td>
+              </tr>
+
+              <tr class="group hover:bg-white/5 transition-colors cursor-pointer" onclick="window.open('https://music.apple.com/us/song/i-rebuke-sickness/1860297433', '_blank')">
+                <td class="px-6 md:px-8 py-5 text-white/40 group-hover:text-primary-container">5</td>
+                <td class="px-6 md:px-8 py-5 text-white font-medium">I Rebuke Sickness</td>
+                <td class="hidden md:table-cell px-8 py-5 text-white/40 text-right">01:46</td>
+              </tr>
+
+              <tr class="group hover:bg-white/5 transition-colors cursor-pointer" onclick="window.open('https://music.apple.com/us/song/let-your-will-be-done/1860297434', '_blank')">
+                <td class="px-6 md:px-8 py-5 text-white/40 group-hover:text-primary-container">6</td>
+                <td class="px-6 md:px-8 py-5 text-white font-medium">Let Your Will Be Done</td>
+                <td class="hidden md:table-cell px-8 py-5 text-white/40 text-right">01:46</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="px-6 md:px-8 py-4 bg-white/5 flex flex-col md:flex-row gap-3 md:justify-between text-[10px] tracking-widest text-white/40 uppercase">
+            <span>6 prayers • The Prayer Closet • Kutlo</span>
+            <span>Released 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOBILE WORSHIP / BAFENYI -->
+    <section class="py-28 md:py-40 bg-surface-dim">
+      <div class="max-w-7xl mx-auto px-6 md:px-16">
+        <div class="mb-20 text-center max-w-4xl mx-auto">
+          <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase mb-6">
+            Mobile Worship
+          </p>
+
+          <h2 class="font-headline text-5xl md:text-7xl font-bold leading-none text-white mb-8">
+            BAFENYI
+          </h2>
+
+          <p class="text-white/60 text-lg leading-relaxed">
+            A song I did with Mobile Worship, a worship movement I co-founded in 2015.
+            <span class="text-white/85">Bafenyi</span> means <span class="text-white/85">Victor</span> or
+            <span class="text-white/85">Conqueror</span> — a reminder that no matter the circumstances we face,
+            we remain in the identity of the victorious.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div class="space-y-8">
+            <div class="glass-card p-8 md:p-10">
+              <h3 class="text-white text-3xl font-headline font-semibold mb-6">
+                Mobile Worship ft Kutlo
+              </h3>
+
+              <div class="space-y-5 text-white/60 leading-relaxed">
+                <p>
+                  <span class="text-primary-container">“Botlhe Ba Ga Jeso ke Bafenyi”</span>
+                  means those who belong to Christ are victors.
+                </p>
+
+                <p>
+                  <span class="text-primary-container">“Ba fenya ka lebitso la gagwe”</span>
+                  means they conquer in His name.
+                </p>
+
+                <p>
+                  This is the unofficial version I did with Mobile Worship — carrying the message
+                  of identity, victory, and belonging in Christ.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-4 mt-8">
+                <a
+                  href="https://open.spotify.com/track/0exhmC36BADBO1ox8NR75Z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-primary-container text-black px-7 py-4 text-[10px] tracking-[0.25em] uppercase hover:bg-white transition"
+                >
+                  Spotify
+                </a>
+
+                <a
+                  href="https://music.apple.com/us/album/bafenyi-feat-kutlo-dimpho-baruti-unofficial-version/1753313089"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="border border-white/10 text-white px-7 py-4 text-[10px] tracking-[0.25em] uppercase hover:bg-white/5 transition"
+                >
+                  Apple Music
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card p-4">
+            <div class="relative w-full aspect-video overflow-hidden">
+              <iframe
+                class="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/07m-DnFNTr0"
+                title="Bafenyi - Mobile Worship ft Kutlo"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-28 md:py-40 bg-background text-center">
+      <div class="max-w-5xl mx-auto px-6 md:px-16">
+        <div class="w-32 h-px gold-line mx-auto mb-12"></div>
+
+        <h2 class="font-bebas text-5xl md:text-8xl leading-none text-white mb-10">
+          MUSIC THAT REMINDS <br />
+          THE SOUL WHO IT IS.
+        </h2>
+
+        <p class="text-white/55 text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+          Every song, prayer, and declaration carries one invitation:
+          come back to God, remember your identity, and receive healing.
+        </p>
+
+        <a href="index.html#contacts" class="inline-flex items-center gap-3 bg-primary-container text-black px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white transition">
+          Book / Invite Kutlo
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-[#0A0A0A] py-14">
+    <div class="max-w-7xl mx-auto px-6 md:px-16 flex flex-col md:flex-row justify-between gap-8 items-center">
+      <p class="text-white/35 text-[10px] tracking-[0.3em] uppercase">
+        © 2024 Kutlo . Digital X.
+      </p>
+
+      <div class="flex gap-8">
+        <a href="index.html" class="text-white/35 hover:text-primary-container text-[10px] tracking-[0.25em] uppercase transition">Home</a>
+        <a href="about.html" class="text-white/35 hover:text-primary-container text-[10px] tracking-[0.25em] uppercase transition">About</a>
+        <a href="index.html#contacts" class="text-white/35 hover:text-primary-container text-[10px] tracking-[0.25em] uppercase transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

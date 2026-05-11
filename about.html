@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BES5K3HT70"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BES5K3HT70');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A0A0A">
+  <title>About Kutlo | The Sound of Healing</title>
+
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            background: "#0A0A0A",
+            surface: "#121414",
+            "surface-dim": "#121414",
+            "surface-container": "#1e2020",
+            "surface-container-low": "#1a1c1c",
+            "primary-container": "#d4af37",
+            primary: "#f2ca50",
+            "on-primary-container": "#241a00",
+            "on-background": "#e2e2e2",
+            "on-surface": "#e2e2e2",
+          },
+          fontFamily: {
+            headline: ["Epilogue", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            bebas: ["Bebas Neue", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      background: #0A0A0A;
+      color: #e2e2e2;
+    }
+
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,.08) 0 1px, transparent 1px);
+      background-size: 4px 4px;
+    }
+
+    .glass-card {
+      background: rgba(18, 18, 18, 0.45);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .gold-line {
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    }
+
+    .hero-text {
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+    }
+  </style>
+</head>
+
+<body class="font-body bg-background text-on-background selection:bg-primary-container selection:text-black">
+  <div class="film-grain"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 md:px-14 py-6 flex items-center justify-between">
+      <a href="index.html" class="text-sm md:text-lg font-light tracking-[0.3em] text-primary-container uppercase">
+        KUTLO
+      </a>
+
+      <div class="hidden md:flex gap-10">
+        <a href="index.html" class="text-[10px] tracking-[0.25em] uppercase text-white/50 hover:text-primary-container transition">Home</a>
+        <a href="about.html" class="text-[10px] tracking-[0.25em] uppercase text-primary-container transition">About</a>
+        <a href="music.html" class="text-[10px] tracking-[0.25em] uppercase text-white/50 hover:text-primary-container transition">Music</a>
+        <a href="index.html#contacts" class="text-[10px] tracking-[0.25em] uppercase text-white/50 hover:text-primary-container transition">Contact</a>
+      </div>
+
+      <a href="index.html#contacts" class="text-[10px] tracking-[0.25em] uppercase text-primary-container border border-primary-container/30 px-5 py-2 hover:bg-primary-container hover:text-black transition">
+        Booking
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative min-h-screen flex items-center overflow-hidden pt-32">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/30 z-10"></div>
+
+      <img
+        src="assets/main.jpg"
+        alt="Kutlo"
+        class="absolute right-0 top-0 w-full md:w-2/3 h-full object-cover opacity-45 md:opacity-70"
+      />
+    </div>
+
+    <div class="relative z-20 max-w-7xl mx-auto px-6 md:px-16 w-full">
+      <div class="max-w-4xl">
+        <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase mb-8">
+          About Kutlo
+        </p>
+
+        <h1 class="font-bebas hero-text text-7xl md:text-[150px] text-white mb-10">
+          SON. <br />
+          BROTHER. <br />
+          WORSHIPPER.
+        </h1>
+
+        <p class="max-w-2xl text-white/65 text-lg md:text-xl leading-relaxed">
+          A life shaped by worship, carried by prayer, and devoted to creating moments
+          where people are reminded of who they are in Christ.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <main>
+    <section class="relative py-28 md:py-40 bg-background">
+      <div class="max-w-7xl mx-auto px-6 md:px-16 grid md:grid-cols-2 gap-20 items-center">
+        <div class="space-y-8">
+          <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase">
+            The Beginning
+          </p>
+
+          <h2 class="font-headline text-4xl md:text-6xl font-bold leading-tight text-white">
+            Born in Gantsi. <br />
+            Formed in worship.
+          </h2>
+
+          <div class="space-y-6 text-white/60 text-lg leading-relaxed">
+            <p>
+              Hi, my name is Kutlo. I was born and raised in a small town in Botswana
+              called Gantsi. My journey began early — I joined the worship team at the age of nine.
+            </p>
+
+            <p>
+              I didn’t fully understand it then, but I knew I was drawn to something real.
+              Since then, worship has never just been something I do — it has become who I am.
+            </p>
+
+            <p>
+              For nearly two decades, I’ve served as a worship leader, growing through different
+              seasons and encounters with Jesus.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-4 border border-primary-container/10"></div>
+          <img
+            src="assets/main2.jpeg"
+            alt="Name Above Names cover art"
+            class="relative z-10 w-full aspect-square object-cover shadow-2xl"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- MOBILE WORSHIP -->
+    <section class="py-28 md:py-40 bg-surface-dim">
+      <div class="max-w-7xl mx-auto px-6 md:px-16 grid md:grid-cols-12 gap-16 items-center">
+        <div class="md:col-span-5 space-y-8">
+          <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase">
+            <a href="https://www.facebook.com/mobileworship" target="_blank">Mobile Worship</a>
+          </p>
+
+          <h2 class="font-headline text-4xl md:text-6xl font-bold leading-tight text-white">
+            Presence over performance.
+          </h2>
+
+          <div class="space-y-6 text-white/60 text-lg leading-relaxed">
+            <p>
+              In 2015, I co-founded a worship movement called <a style="text-decoration: underline;" href="https://www.facebook.com/mobileworship" target="_blank">Mobile Worship</a>, with a vision
+              to cultivate a culture of worship rooted in presence, not performance.
+            </p>
+
+            <p>
+              But over time, I began to understand something deeper about my calling.
+            </p>
+
+            <p class="text-white/85">
+              To be a servant and vessel of God's Presence that brings healing and restoration to people’s lives.
+            </p>
+          </div>
+        </div>
+
+        <div class="md:col-span-7 relative overflow-hidden shadow-2xl">
+          <img
+            src="assets/mobile-worship.jpg"
+            alt="Mobile Worship ministry moment"
+            class="w-full h-[520px] object-cover brightness-75"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-8 left-8 right-8">
+            <p class="text-primary-container text-[11px] tracking-[0.4em] uppercase mb-3">
+              Since 2015
+            </p>
+            <h3 class="text-white text-2xl md:text-3xl font-headline font-semibold">
+              <a href="https://www.facebook.com/mobileworship" target="_blank" class="text-decoration: underline;">A movement of worship, prayer, and encounter.
+            </h3></a> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIKTOK JOURNEY -->
+    <section class="py-28 md:py-40 bg-background">
+      <div class="max-w-7xl mx-auto px-6 md:px-16">
+        <div class="max-w-4xl mx-auto text-center mb-20">
+          <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase mb-6">
+            The TikTok Journey
+          </p>
+
+          <h2 class="font-headline text-4xl md:text-6xl font-bold leading-tight text-white mb-8">
+            From declarations <br />
+            to a digital altar.
+          </h2>
+
+          <p class="text-white/60 text-lg leading-relaxed">
+            TikTok became a space where that calling found expression. What started as a desire
+            to preach the Gospel and share declarations grew into something I never fully planned.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <article class="glass-card p-5 md:p-6 group">
+            <div class="relative overflow-hidden mb-8">
+              <img
+                src="assets/first-declarations-video.jpeg"
+                alt="First declarations video"
+                class="w-full h-[620px] object-cover brightness-90 group-hover:scale-105 transition-transform duration-1000"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <p class="text-primary-container text-[10px] tracking-[0.3em] uppercase mb-2">
+                  First Viral Declaration
+                </p>
+                <h3 class="text-white text-2xl font-headline font-semibold">
+                  <a href="https://www.tiktok.com/@officialkutlo" target="_blank">“I am chosen, royal and set apart.”</a>
+                </h3>
+              </div>
+            </div>
+
+            <p class="text-white/60 leading-relaxed">
+              One day, I felt led to speak about identity — because I believe one of the greatest
+              struggles we face as believers is not knowing who we are in Christ.
+            </p>
+          </article>
+
+          <article class="glass-card p-5 md:p-6 group">
+            <div class="relative overflow-hidden mb-8">
+              <img
+                src="assets/good-morning-holy-spirit.jpeg"
+                alt="Good Morning Holy Spirit video"
+                class="w-full h-[620px] object-cover brightness-90 group-hover:scale-105 transition-transform duration-1000"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <p class="text-primary-container text-[10px] tracking-[0.3em] uppercase mb-2">
+                  A Growing Movement
+                </p>
+                <h3 class="text-white text-2xl font-headline font-semibold">
+                  <a href="https://www.tiktok.com/@officialkutlo" target="_blank">“Good Morning Holy Spirit.”</a>
+                </h3>
+              </div>
+            </div>
+
+            <p class="text-white/60 leading-relaxed">
+              That message resonated. My first declaration video went viral. Then came
+              “Good Morning Holy Spirit” — and from there, everything began to grow.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCRIPTURES -->
+    <section class="py-28 md:py-36 bg-surface-dim">
+      <div class="max-w-7xl mx-auto px-6 md:px-16">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass-card p-10">
+            <span class="material-symbols-outlined text-primary-container text-4xl mb-8 block">
+              auto_stories
+            </span>
+            <p class="text-white/80 text-lg leading-relaxed italic mb-8">
+              “And ye shall know the truth, and the truth shall make you free.”
+            </p>
+            <p class="text-primary-container text-[10px] tracking-[0.3em] uppercase">
+              John 8:32
+            </p>
+          </div>
+
+          <div class="glass-card p-10">
+            <span class="material-symbols-outlined text-primary-container text-4xl mb-8 block">
+              healing
+            </span>
+            <p class="text-white/80 text-lg leading-relaxed italic mb-8">
+              “The Spirit of the Lord is upon me… to heal the brokenhearted.”
+            </p>
+            <p class="text-primary-container text-[10px] tracking-[0.3em] uppercase">
+              Luke 4:18
+            </p>
+          </div>
+
+          <div class="glass-card p-10">
+            <span class="material-symbols-outlined text-primary-container text-4xl mb-8 block">
+              visibility_off
+            </span>
+            <p class="text-white/80 text-lg leading-relaxed italic mb-8">
+              “For we walk by faith, not by sight.”
+            </p>
+            <p class="text-primary-container text-[10px] tracking-[0.3em] uppercase">
+              2 Corinthians 5:7
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="py-28 md:py-40 bg-background">
+      <div class="max-w-7xl mx-auto px-6 md:px-16">
+        <div class="relative bg-surface-container-low border border-white/5 p-8 md:p-16 overflow-hidden">
+          <div class="absolute top-0 right-0 text-[130px] md:text-[260px] font-bebas text-white/[0.03] leading-none select-none">
+            250K+
+          </div>
+
+          <div class="relative z-10 max-w-4xl">
+            <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase mb-6">
+              A Community of Prayer
+            </p>
+
+            <h2 class="font-headline text-4xl md:text-6xl font-bold leading-tight text-white mb-8">
+              More than content. <br />
+              A place of healing.
+            </h2>
+
+            <div class="space-y-6 text-white/60 text-lg leading-relaxed">
+              <p>
+                Today, that space has become a community of over 250,000 people.
+                Every Sunday, we gather for prayer. And through those moments, I’ve seen
+                something powerful — healing.
+              </p>
+
+              <p>
+                Not just encouragement… but real healing. People often share that the prayers
+                have brought peace to their hearts, clarity to their minds, and healing to their souls.
+                That’s something I don’t take lightly.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-wrap gap-6">
+              <a href="index.html#contacts" class="bg-primary-container text-black px-10 py-4 text-[11px] tracking-[0.2em] uppercase hover:bg-white transition">
+                Connect with Me
+              </a>
+
+              <a href="music.html" class="border border-white/10 text-white px-10 py-4 text-[11px] tracking-[0.2em] uppercase hover:bg-white/5 transition">
+                Listen to the Music
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC / CALLING -->
+    <section class="py-28 md:py-40 bg-surface-dim">
+      <div class="max-w-7xl mx-auto px-6 md:px-16 grid md:grid-cols-2 gap-20 items-center">
+        <div class="space-y-8 order-2 md:order-1">
+          <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase">
+            Music as Ministry
+          </p>
+
+          <h2 class="font-headline text-4xl md:text-6xl font-bold leading-tight text-white">
+            What was spoken in prayer <br />
+            is now carried through sound.
+          </h2>
+
+          <div class="space-y-6 text-white/60 text-lg leading-relaxed">
+            <p>
+              More recently, I’ve stepped into music more intentionally.
+              What was once spoken in prayer is now being carried through sound.
+            </p>
+
+            <p>
+              My music is an extension of that same calling — to reach, to remind,
+              and to restore.
+            </p>
+
+            <p class="text-white/85">
+              At the core of everything I do is this: to carry a message that brings people
+              back to Jesus, and to create moments where healing can take place.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative order-1 md:order-2">
+          <div class="absolute -inset-4 border border-primary-container/10"></div>
+          <img
+            src="assets/name-above-names-cover.webp"
+            alt="Kutlo music cover art"
+            class="relative z-10 w-full aspect-square object-cover shadow-2xl"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- EARLY WORSHIP YEARS -->
+<section class="py-28 md:py-40 bg-surface-dim relative overflow-hidden">
+  <div class="absolute top-20 left-10 w-72 h-72 bg-primary-container/10 blur-[120px] rounded-full"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#8B5A2B]/20 blur-[140px] rounded-full"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16">
+    <div class="max-w-4xl mx-auto text-center mb-20">
+      <p class="text-primary-container text-[11px] tracking-[0.5em] uppercase mb-6">
+        Early Worship Years
+      </p>
+
+      <h2 class="font-headline text-4xl md:text-6xl font-bold leading-tight text-white mb-8">
+        Before the platforms, <br />
+        there was the altar.
+      </h2>
+
+      <p class="text-white/60 text-lg leading-relaxed">
+        Long before the music releases, the videos, and the digital community, there was a young boy
+        learning to serve God through worship. These moments are a reminder that the calling did not
+        begin on a stage — it began in surrender.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <!-- Nostalgic Image 1 -->
+      <article class="glass-card p-5 md:p-6 group">
+        <div class="relative overflow-hidden mb-8">
+          <img
+            src="assets/young-worship-1.jpg"
+            alt="Young Kutlo leading worship"
+            class="w-full h-[520px] md:h-[640px] object-cover brightness-75 sepia-[0.15] group-hover:brightness-90 group-hover:scale-105 transition-all duration-1000"
+          />
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+          <div class="absolute bottom-6 left-6 right-6">
+            <p class="text-primary-container text-[10px] tracking-[0.35em] uppercase mb-3">
+              A life shaped by worship
+            </p>
+
+            <h3 class="text-white text-2xl md:text-3xl font-headline font-semibold leading-tight">
+              A young voice learning to carry worship.
+            </h3>
+          </div>
+        </div>
+
+        <p class="text-white/60 leading-relaxed">
+          "Worship involves Jesus pouring his love on people, and their response is to pour their love back on him in an exchange."- Kim Walker-Smith
+        </p>
+      </article>
+
+      <!-- Nostalgic Image 2 -->
+      <article class="glass-card p-5 md:p-6 group md:mt-20">
+        <div class="relative overflow-hidden mb-8">
+          <img
+            src="assets/young-worship-2.jpg"
+            alt="Kutlo leading worship in earlier years"
+            class="w-full h-[520px] md:h-[640px] object-cover brightness-75 sepia-[0.15] group-hover:brightness-90 group-hover:scale-105 transition-all duration-1000"
+          />
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+          <div class="absolute bottom-6 left-6 right-6">
+            <p class="text-primary-container text-[10px] tracking-[0.35em] uppercase mb-3">
+              Formed in Service
+            </p>
+
+            <h3 class="text-white text-2xl md:text-3xl font-headline font-semibold leading-tight">
+              Worship became more than something I did.
+            </h3>
+          </div>
+        </div>
+
+        <p class="text-white/60 leading-relaxed">
+          Worship is being able to come before God and it is about understanding who he is. He is God! So when you are worshipping God, you know right away that it isn't about you but it is about him" - Cece Winans
+        </p>
+      </article>
+    </div>
+
+    <div class="mt-20 max-w-4xl mx-auto text-center">
+      <div class="w-24 h-px gold-line mx-auto mb-10"></div>
+
+      <p class="text-white/70 text-xl md:text-2xl leading-relaxed italic">
+        “Since then, worship has never just been something I do — it has become who I am.”
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- FINAL STATEMENT -->
+    <section class="py-28 md:py-40 bg-background text-center">
+      <div class="max-w-5xl mx-auto px-6 md:px-16">
+        <div class="w-32 h-px gold-line mx-auto mb-12"></div>
+
+        <h2 class="font-bebas text-5xl md:text-8xl leading-none text-white mb-10">
+          TO CARRY A SOUND <br />
+          THAT BRINGS PEOPLE <br />
+          BACK TO JESUS.
+        </h2>
+
+        <p class="text-white/55 text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+          And to create moments where healing can take place.
+        </p>
+
+        <a href="index.html#contacts" class="inline-flex items-center gap-3 bg-primary-container text-black px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white transition">
+          Connect With Kutlo
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-[#0A0A0A] py-14">
+    <div class="max-w-7xl mx-auto px-6 md:px-16 flex flex-col md:flex-row justify-between gap-8 items-center">
+      <p class="text-white/35 text-[10px] tracking-[0.3em] uppercase">
+        © 2024 Kutlo . Digital X .
+      </p>
+
+      <div class="flex gap-8">
+        <a href="index.html" class="text-white/35 hover:text-primary-container text-[10px] tracking-[0.25em] uppercase transition">Home</a>
+        <a href="music.html" class="text-white/35 hover:text-primary-container text-[10px] tracking-[0.25em] uppercase transition">Music</a>
+        <a href="index.html#contacts" class="text-white/35 hover:text-primary-container text-[10px] tracking-[0.25em] uppercase transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
