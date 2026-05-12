@@ -19,9 +19,68 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0A0A0A">
 <title>Kutlo | Healing In Worship</title>
+<link rel="preload" href="/public/assets/fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/public/assets/fonts/BebasNeue-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/public/assets/fonts/Epilogue-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/public/assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face {
+    font-family: "Bebas Neue";
+    src: url("/public/assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Epilogue";
+    src: url("/public/assets/fonts/Epilogue-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Epilogue";
+    src: url("/public/assets/fonts/Epilogue-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Epilogue";
+    src: url("/public/assets/fonts/Epilogue-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Epilogue";
+    src: url("/public/assets/fonts/Epilogue-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Inter";
+    src: url("/public/assets/fonts/Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Inter";
+    src: url("/public/assets/fonts/Inter-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;600&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
