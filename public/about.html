@@ -22,7 +22,7 @@
 
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
+ <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
  <link rel="preload" href="assets/fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/BebasNeue-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="assets/fonts/Epilogue-Bold.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,7 +30,7 @@
 <style>
   @font-face {
     font-family: "Bebas Neue";
-    src: url("assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+    src: url("/assets/fonts/BebasNeue-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -38,7 +38,7 @@
 
   @font-face {
     font-family: "Epilogue";
-    src: url("assets/fonts/Epilogue-Regular.woff2") format("woff2");
+    src: url("/assets/fonts/Epilogue-Regular.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -46,7 +46,7 @@
 
   @font-face {
     font-family: "Epilogue";
-    src: url("assets/fonts/Epilogue-SemiBold.woff2") format("woff2");
+    src: url("/assets/fonts/Epilogue-SemiBold.woff2") format("woff2");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -62,7 +62,7 @@
 
   @font-face {
     font-family: "Epilogue";
-    src: url("assets/fonts/Epilogue-ExtraBold.woff2") format("woff2");
+    src: url("/assets/fonts/Epilogue-ExtraBold.woff2") format("woff2");
     font-weight: 800;
     font-style: normal;
     font-display: swap;
@@ -70,7 +70,7 @@
 
   @font-face {
     font-family: "Inter";
-    src: url("assets/fonts/Inter-Regular.woff2") format("woff2");
+    src: url("/assets/fonts/Inter-Regular.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -78,7 +78,7 @@
 
   @font-face {
     font-family: "Inter";
-    src: url("assets/fonts/Inter-SemiBold.woff2") format("woff2");
+    src: url("/assets/fonts/Inter-SemiBold.woff2") format("woff2");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -157,11 +157,11 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex gap-12">
-      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-[#D4AF37] border-b border-[#D4AF37] pb-1 hover:text-white transition-colors duration-500" href="index.html">
+      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-white/60 hover:text-white transition-colors duration-500" href="index.html">
         Home
       </a>
 
-      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-white/60 hover:text-white transition-colors duration-500" href="about.html">
+      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-[#D4AF37] border-b border-[#D4AF37] pb-1  hover:text-white transition-colors duration-500" href="about.html">
         About
       </a>
 
