@@ -206,7 +206,7 @@
     class="hidden md:hidden border-t border-white/10 bg-[#0A0A0A]/95 backdrop-blur-xl px-5 py-6"
   >
     <div class="flex flex-col gap-5">
-      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-[#D4AF37]" href="index.html">
+      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-white/60 hover:text-white transition-colors" href="index.html">
         Home
       </a>
 
@@ -214,7 +214,7 @@
         About
       </a>
 
-      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-white/60 hover:text-white transition-colors" href="music.html">
+      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-[#D4AF37]" href="music.html">
         Music
       </a>
 
@@ -694,5 +694,37 @@
       </div>
     </div>
   </footer>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+
+    if (!mobileMenuButton || !mobileMenu) return;
+
+    mobileMenuButton.addEventListener("click", function () {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+
+      mobileMenu.classList.toggle("hidden");
+      mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+
+      if (mobileMenuIcon) {
+        mobileMenuIcon.textContent = isOpen ? "menu" : "close";
+      }
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileMenu.classList.add("hidden");
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+
+        if (mobileMenuIcon) {
+          mobileMenuIcon.textContent = "menu";
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>
