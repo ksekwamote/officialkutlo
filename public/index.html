@@ -872,6 +872,7 @@ from pleading to praise, from lack to knowing who you are.</p>
 </div>
 </footer>
 <script type="module">
+<script type="module">
   import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
   import {
     getAuth,
@@ -897,12 +898,12 @@ from pleading to praise, from lack to knowing who you are.</p>
 
   const form = document.getElementById("contact-form");
   const submitButton = document.getElementById("submit-button");
-  const submitButtonText = submitButton.querySelector("span.relative");
+  const submitButtonText = submitButton?.querySelector("span.relative");
   const notifContainer = document.getElementById("form-notification");
   const notifTitle = document.getElementById("notif-title");
   const notifMessage = document.getElementById("notif-message");
   const notifIcon = document.getElementById("notif-icon");
-  const originalButtonText = submitButtonText.innerText;
+  const originalButtonText = submitButtonText?.innerText || "SEND INQUIRY";
 
   const actionCodeSettings = {
     url: window.location.origin + window.location.pathname,
@@ -910,7 +911,16 @@ from pleading to praise, from lack to knowing who you are.</p>
   };
 
   function showNotification(type, title, message) {
-    notifContainer.classList.remove("hidden", "border-primary-container/20", "border-error/20");
+    if (!notifContainer || !notifTitle || !notifMessage || !notifIcon) {
+      alert(message);
+      return;
+    }
+
+    notifContainer.classList.remove(
+      "hidden",
+      "border-primary-container/20",
+      "border-error/20"
+    );
 
     if (type === "error") {
       notifContainer.classList.add("border-error/20");
@@ -935,24 +945,37 @@ from pleading to praise, from lack to knowing who you are.</p>
   }
 
   function setLoading(isLoading, label = "PROCESSING...") {
+    if (!submitButton || !submitButtonText) return;
+
     submitButton.disabled = isLoading;
     submitButton.classList.toggle("opacity-60", isLoading);
     submitButton.classList.toggle("cursor-not-allowed", isLoading);
     submitButtonText.innerText = isLoading ? label : originalButtonText;
   }
 
+  function normalizeEmail(email) {
+    return String(email || "").trim().toLowerCase();
+  }
+
   function getStoredPasswordKey(email) {
-    return `firebase_temp_password_${btoa(email.toLowerCase())}`;
+    return `firebase_temp_password_${btoa(normalizeEmail(email))}`;
   }
 
   function createRandomPassword() {
     const bytes = new Uint8Array(18);
     crypto.getRandomValues(bytes);
-    return `Kutlo-${Array.from(bytes, (byte) => byte.toString(36)).join("")}-!9`;
+
+    return `Kutlo-${Array.from(bytes, (byte) =>
+      byte.toString(36)
+    ).join("")}-!9`;
   }
 
   function getPendingSubmission() {
-    return JSON.parse(localStorage.getItem("pending_form_submission") || "null");
+    try {
+      return JSON.parse(localStorage.getItem("pending_form_submission") || "null");
+    } catch (_) {
+      return null;
+    }
   }
 
   function savePendingSubmission(data) {
@@ -965,6 +988,23 @@ from pleading to praise, from lack to knowing who you are.</p>
     localStorage.removeItem("email_for_sign_in");
   }
 
+  async function readJsonResponse(response, fallbackMessage) {
+    const text = await response.text();
+
+    let result = {};
+    try {
+      result = text ? JSON.parse(text) : {};
+    } catch (_) {
+      result = {};
+    }
+
+    if (!response.ok) {
+      throw new Error(result.error || fallbackMessage);
+    }
+
+    return result;
+  }
+
   async function checkEmailStatus(email) {
     const response = await fetch(CHECK_EMAIL_STATUS_URL, {
       method: "POST",
@@ -972,13 +1012,7 @@ from pleading to praise, from lack to knowing who you are.</p>
       body: JSON.stringify({email}),
     });
 
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.error || "Could not check email status.");
-    }
-
-    return result;
+    return readJsonResponse(response, "Could not check email status.");
   }
 
   async function submitToBackend({idToken, name, email, category, message}) {
@@ -988,18 +1022,10 @@ from pleading to praise, from lack to knowing who you are.</p>
       body: JSON.stringify({idToken, name, email, category, message}),
     });
 
-    let result = {};
-    try {
-      result = await response.json();
-    } catch (_) {
-      result = {};
-    }
-
-    if (!response.ok) {
-      throw new Error(result.error || "The message could not be submitted. Please try again.");
-    }
-
-    return result;
+    return readJsonResponse(
+      response,
+      "The message could not be submitted. Please try again."
+    );
   }
 
   async function handleSuccessfulSubmission(category) {
@@ -1017,8 +1043,41 @@ from pleading to praise, from lack to knowing who you are.</p>
       );
     }
 
-    form.reset();
+    if (form) form.reset();
     clearPendingSubmission();
+  }
+
+  async function submitVerifiedLocalUser(email) {
+    const normalizedEmail = normalizeEmail(email);
+    const password = localStorage.getItem(getStoredPasswordKey(normalizedEmail));
+    const pendingSubmission = getPendingSubmission();
+
+    if (!password || !pendingSubmission) {
+      return false;
+    }
+
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      normalizedEmail,
+      password
+    );
+
+    await userCredential.user.reload();
+
+    if (!userCredential.user.emailVerified) {
+      return false;
+    }
+
+    const idToken = await userCredential.user.getIdToken(true);
+
+    await submitToBackend({
+      idToken,
+      ...pendingSubmission,
+    });
+
+    await handleSuccessfulSubmission(pendingSubmission.category);
+
+    return true;
   }
 
   async function completeEmailLinkSignInIfPresent() {
@@ -1030,10 +1089,94 @@ from pleading to praise, from lack to knowing who you are.</p>
       const email = localStorage.getItem("email_for_sign_in");
 
       if (!email) {
-        throw new Error("Could not find the email used to submit the form. Please submit the form again.");
+        throw new Error(
+          "Could not find the email used to submit the form. Please submit the form again."
+        );
       }
 
-      const userCredential = await signInWithEmailLink(auth, email, window.location.href);
+      const userCredential = await signInWithEmailLink(
+        auth,
+        email,
+        window.location.href
+      );
+
+      const pendingSubmission = getPendingSubmission();
+
+      if (!pendingSubmission) {
+        showNotification(
+          "success",
+          "Email Verified",
+          "Your email has been verified. Please submit your message again."
+        );
+
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+
+      const idToken = await userCredential.user.getIdToken(true);
+
+      await submitToBackend({
+        idToken,
+        ...pendingSubmission,
+      });
+
+      await handleSuccessfulSubmission(pendingSubmission.category);
+
+      window.history.replaceState({}, document.title, window.location.pathname);
+    } catch (error) {
+      showNotification(
+        "error",
+        "Verification Failed",
+        error.message || "Could not complete email verification."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function createUserAndSendVerification(email) {
+    const normalizedEmail = normalizeEmail(email);
+    const password = createRandomPassword();
+
+    localStorage.setItem(getStoredPasswordKey(normalizedEmail), password);
+
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      normalizedEmail,
+      password
+    );
+
+    await sendEmailVerification(userCredential.user);
+
+    showNotification(
+      "info",
+      "Verification Required",
+      "We’ve sent a verification link to your email. Please verify your email, then come back and submit the form again. Once verified, your message will be sent immediately."
+    );
+  }
+
+  async function resendVerificationForExistingUser(email) {
+    const normalizedEmail = normalizeEmail(email);
+    const password = localStorage.getItem(getStoredPasswordKey(normalizedEmail));
+
+    if (!password) {
+      showNotification(
+        "info",
+        "Verification Already Started",
+        "This email has already started verification. Please check your inbox or spam folder for the verification email. If you used another device or browser, restart with a different email or use the secure link when prompted."
+      );
+      return;
+    }
+
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      normalizedEmail,
+      password
+    );
+
+    await userCredential.user.reload();
+
+    if (userCredential.user.emailVerified) {
       const pendingSubmission = getPendingSubmission();
 
       if (!pendingSubmission) {
@@ -1046,50 +1189,12 @@ from pleading to praise, from lack to knowing who you are.</p>
       }
 
       const idToken = await userCredential.user.getIdToken(true);
-      await submitToBackend({idToken, ...pendingSubmission});
-      await handleSuccessfulSubmission(pendingSubmission.category);
 
-      window.history.replaceState({}, document.title, window.location.pathname);
-    } catch (error) {
-      showNotification("error", "Verification Failed", error.message || "Could not complete email verification.");
-    } finally {
-      setLoading(false);
-    }
-  }
+      await submitToBackend({
+        idToken,
+        ...pendingSubmission,
+      });
 
-  async function createUserAndSendVerification(email) {
-    const password = createRandomPassword();
-    localStorage.setItem(getStoredPasswordKey(email), password);
-
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await sendEmailVerification(userCredential.user);
-
-    showNotification(
-      "info",
-      "Verification Required",
-      "We’ve sent a verification link to your email. Please verify your email, then come back and submit the form again."
-    );
-  }
-
-  async function resendVerificationForExistingUser(email) {
-    const password = localStorage.getItem(getStoredPasswordKey(email));
-
-    if (!password) {
-      showNotification(
-        "info",
-        "Verification Already Started",
-        "This email has already started verification. Please check your inbox or spam folder for the verification email. If you used another device/browser, restart with a different email."
-      );
-      return;
-    }
-
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    await userCredential.user.reload();
-
-    if (userCredential.user.emailVerified) {
-      const idToken = await userCredential.user.getIdToken(true);
-      const pendingSubmission = getPendingSubmission();
-      await submitToBackend({idToken, ...pendingSubmission});
       await handleSuccessfulSubmission(pendingSubmission.category);
       return;
     }
@@ -1104,60 +1209,88 @@ from pleading to praise, from lack to knowing who you are.</p>
   }
 
   async function sendPasswordlessSignInLink(email) {
-    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+    const normalizedEmail = normalizeEmail(email);
+
+    await sendSignInLinkToEmail(auth, normalizedEmail, actionCodeSettings);
+
+    localStorage.setItem("email_for_sign_in", normalizedEmail);
 
     showNotification(
       "info",
-      "One Final Step",
-      "Your email is already verified. We’ve sent you a secure link — please check your inbox and click it to complete your submission."
+      "Secure Confirmation Sent",
+      "This email is already verified. We’ve sent you a secure confirmation link — please check your inbox and click it to complete your submission."
     );
   }
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    setLoading(true);
+  if (form) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setLoading(true);
 
-    try {
-      const formData = new FormData(form);
-      const name = formData.get("name")?.trim();
-      const email = formData.get("email")?.trim().toLowerCase();
-      const category = formData.get("category")?.trim();
-      const message = formData.get("message")?.trim();
+      try {
+        const formData = new FormData(form);
 
-      if (!name || !email || !category || !message) {
-        showNotification("error", "Missing Details", "Please complete all fields before submitting.");
-        return;
+        const name = formData.get("name")?.trim();
+        const email = normalizeEmail(formData.get("email"));
+        const category = formData.get("category")?.trim();
+        const message = formData.get("message")?.trim();
+
+        if (!name || !email || !category || !message) {
+          showNotification(
+            "error",
+            "Missing Details",
+            "Please complete all fields before submitting."
+          );
+          return;
+        }
+
+        const submission = {
+          name,
+          email,
+          category,
+          message,
+        };
+
+        savePendingSubmission(submission);
+
+        const status = await checkEmailStatus(email);
+
+        if (status.nextAction === "CREATE_AND_VERIFY") {
+          await createUserAndSendVerification(email);
+          return;
+        }
+
+        if (status.nextAction === "VERIFY_EMAIL") {
+          await resendVerificationForExistingUser(email);
+          return;
+        }
+
+        if (status.nextAction === "SIGN_IN_LINK") {
+          const submittedImmediately = await submitVerifiedLocalUser(email);
+
+          if (submittedImmediately) {
+            return;
+          }
+
+          await sendPasswordlessSignInLink(email);
+          return;
+        }
+
+        throw new Error("Unknown email status. Please try again.");
+      } catch (error) {
+        showNotification(
+          "error",
+          "Submission Failed",
+          error.message || "Something went wrong. Please try again."
+        );
+      } finally {
+        setLoading(false);
       }
+    });
+  }
 
-      const submission = {name, email, category, message};
-      savePendingSubmission(submission);
-
-      const status = await checkEmailStatus(email);
-
-      if (status.nextAction === "CREATE_AND_VERIFY") {
-        await createUserAndSendVerification(email);
-        return;
-      }
-
-      if (status.nextAction === "VERIFY_EMAIL") {
-        await resendVerificationForExistingUser(email);
-        return;
-      }
-
-      if (status.nextAction === "SIGN_IN_LINK") {
-        await sendPasswordlessSignInLink(email);
-        return;
-      }
-
-      throw new Error("Unknown email status. Please try again.");
-    } catch (error) {
-      showNotification("error", "Submission Failed", error.message || "Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  });
-
-    const audio = document.getElementById("beggar-audio");
+  // Audio player
+  const audio = document.getElementById("beggar-audio");
   const playBtn = document.getElementById("beggar-play-btn");
   const playIcon = document.getElementById("beggar-play-icon");
   const timeLabel = document.getElementById("beggar-time");
@@ -1166,18 +1299,21 @@ from pleading to praise, from lack to knowing who you are.</p>
   const muteBtn = document.getElementById("beggar-mute-btn");
   const volumeIcon = document.getElementById("beggar-volume-icon");
 
-   
-
   function formatTime(seconds) {
     if (isNaN(seconds)) return "00:00";
+
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
+
     return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   }
 
   function updateTime() {
+    if (!audio || !timeLabel || !progress) return;
+
     const current = formatTime(audio.currentTime);
     const duration = formatTime(audio.duration);
+
     timeLabel.textContent = `${current} / ${duration}`;
 
     if (audio.duration) {
@@ -1186,42 +1322,52 @@ from pleading to praise, from lack to knowing who you are.</p>
     }
   }
 
-  playBtn.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play();
-      playIcon.textContent = "pause_circle";
-    } else {
-      audio.pause();
+  if (audio && playBtn && playIcon) {
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playIcon.textContent = "pause_circle";
+      } else {
+        audio.pause();
+        playIcon.textContent = "play_circle";
+      }
+    });
+
+    audio.addEventListener("loadedmetadata", updateTime);
+    audio.addEventListener("timeupdate", updateTime);
+
+    audio.addEventListener("ended", () => {
       playIcon.textContent = "play_circle";
-    }
-  });
 
-  audio.addEventListener("loadedmetadata", updateTime);
-  audio.addEventListener("timeupdate", updateTime);
+      if (progress) {
+        progress.style.width = "0%";
+      }
 
-  audio.addEventListener("ended", () => {
-    playIcon.textContent = "play_circle";
-    progress.style.width = "0%";
-    audio.currentTime = 0;
-  });
+      audio.currentTime = 0;
+    });
+  }
 
-  progressWrap.addEventListener("click", (e) => {
-    const rect = progressWrap.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const percent = clickX / rect.width;
+  if (progressWrap && audio) {
+    progressWrap.addEventListener("click", (event) => {
+      const rect = progressWrap.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const percent = clickX / rect.width;
 
-    if (audio.duration) {
-      audio.currentTime = percent * audio.duration;
-    }
-  });
+      if (audio.duration) {
+        audio.currentTime = percent * audio.duration;
+      }
+    });
+  }
 
-  muteBtn.addEventListener("click", () => {
-    audio.muted = !audio.muted;
-    volumeIcon.textContent = audio.muted ? "volume_off" : "volume_up";
-  });
+  if (muteBtn && audio && volumeIcon) {
+    muteBtn.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+      volumeIcon.textContent = audio.muted ? "volume_off" : "volume_up";
+    });
+  }
 
-
-   document.addEventListener("DOMContentLoaded", function () {
+  // Mobile menu
+  document.addEventListener("DOMContentLoaded", function () {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     const mobileMenuIcon = document.getElementById("mobile-menu-icon");
@@ -1252,5 +1398,6 @@ from pleading to praise, from lack to knowing who you are.</p>
   });
 
   completeEmailLinkSignInIfPresent();
+</script>
 </script>
 </body></html>
