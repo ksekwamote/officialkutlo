@@ -356,49 +356,83 @@
   </div>
 </nav>
 <!-- Section 1: Hero -->
-<header class="relative min-h-screen flex items-center overflow-hidden bg-surface-dim">
-  <div class="absolute inset-0 z-0 flex justify-end">
-    <div class="relative w-full md:w-3/4 h-full pt-5 md:pt-24">
-      
-      <img
-        alt="Kutlo Portrait"
-        class="w-full h-full object-cover object-top"
-        src="assets/kutlo-hero-portrait.jpg"
-      />
-
-      <!-- Softer overlays: keeps image visible, protects text area only -->
-      <div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 md:via-background/25 to-transparent"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
-    </div>
+<header class="relative min-h-screen flex items-center overflow-hidden bg-[#120b07] pt-28 md:pt-24 pb-16 md:pb-0">
+  <!-- Background atmosphere -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(212,175,55,0.20),transparent_36%),linear-gradient(135deg,#0A0A0A_0%,#1a0f09_45%,#3b2115_100%)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 md:via-black/55 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/25"></div>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full pt-28 md:pt-20">
-    <div class="max-w-2xl text-center md:text-left mx-auto md:mx-0">
-      <h1 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.85] tracking-tight text-white mb-4 relative"> THIS IS MORE THAN SOUND. <br/> THIS IS ENCOUNTER. <span class="block text-primary-container italic font-accent-script absolute -bottom-8 left-0 md:left-48 text-4xl sm:text-6xl md:text-8xl lowercase tracking-normal z-20 opacity-90"></span> </h1>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-      <p class="mt-16 text-white/70 font-body-lg max-w-md leading-relaxed tracking-wide mx-auto md:mx-0">
-        Music born from stillness. Words rooted in prayer. <br />
-        A life committed to His presence.
-      </p>
+      <!-- Left: Song message -->
+      <div class="lg:col-span-6 text-center lg:text-left order-2 lg:order-1">
+        <p class="text-primary-container font-label-sm tracking-[0.45em] uppercase mb-6">
+          New Single Out Now
+        </p>
 
-      <div class="mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-5 sm:gap-8">
-        <a
-          href="https://distrokid.com/hyperfollow/kutlo1/prayers-for-november-2025/"
-          target="_blank"
-          class="w-full sm:w-auto text-center px-10 py-4 border border-primary-container text-primary-container font-label-sm uppercase tracking-[0.3em] hover:bg-primary-container hover:text-on-secondary transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0.15)] inline-block"
-        >
-          LISTEN NOW
-        </a>
+        <h1 class="font-bebas text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] leading-[0.82] tracking-tight text-white mb-8">
+          I'M NOT <br />
+          A BEGGAR
+        </h1>
 
-        <a
-          class="font-label-sm uppercase tracking-[0.3em] text-white/40 hover:text-primary-container transition-all duration-300 flex items-center justify-center gap-2"
-          href="https://www.tiktok.com/@officialkutlo"
-          target="_blank"
-        >
-          WATCH ON TIKTOK
-          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-        </a>
+        <p class="text-white/70 font-body-lg max-w-xl leading-relaxed tracking-wide mx-auto lg:mx-0">
+          A declaration of identity, sonship, and confidence in Christ — from pleading to praise,
+          from lack to the truth that we have more than enough in Him.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6">
+          <a
+            href="https://distrokid.com/hyperfollow/kutlo1/im-not-a-beggar"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto text-center px-9 sm:px-10 py-4 bg-primary-container text-black font-label-sm uppercase tracking-[0.25em] hover:bg-white transition-all duration-500 shadow-[0_0_28px_rgba(212,175,55,0.22)] inline-flex items-center justify-center gap-3"
+          >
+            Listen Now
+            <span class="text-base leading-none">→</span>
+          </a>
+
+          <a
+            class="w-full sm:w-auto text-center px-9 sm:px-10 py-4 border border-white/15 text-white/70 font-label-sm uppercase tracking-[0.25em] hover:text-primary-container hover:border-primary-container/40 transition-all duration-300 inline-flex items-center justify-center gap-3"
+            href="music.html"
+          >
+            View Music
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+          <div class="border-t border-primary-container/30 pt-4">
+            <p class="text-primary-container text-[10px] tracking-[0.25em] uppercase">Sound</p>
+            <p class="text-white/55 text-sm mt-2">Worship</p>
+          </div>
+          <div class="border-t border-primary-container/30 pt-4">
+            <p class="text-primary-container text-[10px] tracking-[0.25em] uppercase">Theme</p>
+            <p class="text-white/55 text-sm mt-2">Identity</p>
+          </div>
+          <div class="border-t border-primary-container/30 pt-4">
+            <p class="text-primary-container text-[10px] tracking-[0.25em] uppercase">Status</p>
+            <p class="text-white/55 text-sm mt-2">Out Now</p>
+          </div>
+        </div>
       </div>
+
+      <!-- Right: Cover art -->
+      <div class="lg:col-span-6 order-1 lg:order-2">
+        <div class="relative max-w-[360px] sm:max-w-[460px] lg:max-w-[620px] mx-auto">
+          <div class="absolute -inset-4 sm:-inset-6 bg-primary-container/20 blur-[70px] rounded-full"></div>
+          <div class="relative rounded-xl overflow-hidden border border-primary-container/20 shadow-[0_35px_100px_rgba(0,0,0,0.65)] bg-black/30">
+            <img
+              alt="I'm Not A Beggar single artwork by Kutlo"
+              class="w-full aspect-square object-cover"
+              src="/assets/beggar.jpg"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-white/5 pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </header>
