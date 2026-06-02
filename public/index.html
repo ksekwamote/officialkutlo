@@ -906,28 +906,7 @@ from pleading to praise, from lack to knowing who you are.</p>
 </div>
 </footer>
 <script type="module">
-  import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    sendEmailVerification,
-    sendSignInLinkToEmail,
-    isSignInWithEmailLink,
-    signInWithEmailLink,
-  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAkvidVT4yRZUsMnHbx8b4Z3SMUegCcchU",
-    authDomain: "officialkutlo-27563.firebaseapp.com",
-    projectId: "officialkutlo-27563",
-  };
-
   const SUBMIT_FUNCTION_URL = "https://submitform-exo3s4zooq-uc.a.run.app";
-  const CHECK_EMAIL_STATUS_URL = "https://checkemailstatus-exo3s4zooq-uc.a.run.app";
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
 
   const form = document.getElementById("contact-form");
   const submitButton = document.getElementById("submit-button");
@@ -937,11 +916,6 @@ from pleading to praise, from lack to knowing who you are.</p>
   const notifMessage = document.getElementById("notif-message");
   const notifIcon = document.getElementById("notif-icon");
   const originalButtonText = submitButtonText?.innerText || "SEND INQUIRY";
-
-  const actionCodeSettings = {
-    url: window.location.origin + window.location.pathname,
-    handleCodeInApp: true,
-  };
 
   function showNotification(type, title, message) {
     if (!notifContainer || !notifTitle || !notifMessage || !notifIcon) {
@@ -990,37 +964,6 @@ from pleading to praise, from lack to knowing who you are.</p>
     return String(email || "").trim().toLowerCase();
   }
 
-  function getStoredPasswordKey(email) {
-    return `firebase_temp_password_${btoa(normalizeEmail(email))}`;
-  }
-
-  function createRandomPassword() {
-    const bytes = new Uint8Array(18);
-    crypto.getRandomValues(bytes);
-
-    return `Kutlo-${Array.from(bytes, (byte) =>
-      byte.toString(36)
-    ).join("")}-!9`;
-  }
-
-  function getPendingSubmission() {
-    try {
-      return JSON.parse(localStorage.getItem("pending_form_submission") || "null");
-    } catch (_) {
-      return null;
-    }
-  }
-
-  function savePendingSubmission(data) {
-    localStorage.setItem("pending_form_submission", JSON.stringify(data));
-    localStorage.setItem("email_for_sign_in", data.email);
-  }
-
-  function clearPendingSubmission() {
-    localStorage.removeItem("pending_form_submission");
-    localStorage.removeItem("email_for_sign_in");
-  }
-
   async function readJsonResponse(response, fallbackMessage) {
     const text = await response.text();
 
@@ -1038,21 +981,16 @@ from pleading to praise, from lack to knowing who you are.</p>
     return result;
   }
 
-  async function checkEmailStatus(email) {
-    const response = await fetch(CHECK_EMAIL_STATUS_URL, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({email}),
-    });
-
-    return readJsonResponse(response, "Could not check email status.");
-  }
-
-  async function submitToBackend({idToken, name, email, category, message}) {
+  async function submitToBackend({name, email, category, message}) {
     const response = await fetch(SUBMIT_FUNCTION_URL, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({idToken, name, email, category, message}),
+      body: JSON.stringify({
+        name,
+        email,
+        category,
+        message,
+      }),
     });
 
     return readJsonResponse(
@@ -1077,188 +1015,12 @@ from pleading to praise, from lack to knowing who you are.</p>
     }
 
     if (form) form.reset();
-    clearPendingSubmission();
-  }
-
-  async function submitVerifiedLocalUser(email) {
-    const normalizedEmail = normalizeEmail(email);
-    const password = localStorage.getItem(getStoredPasswordKey(normalizedEmail));
-    const pendingSubmission = getPendingSubmission();
-
-    if (!password || !pendingSubmission) {
-      return false;
-    }
-
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      normalizedEmail,
-      password
-    );
-
-    await userCredential.user.reload();
-
-    if (!userCredential.user.emailVerified) {
-      return false;
-    }
-
-    const idToken = await userCredential.user.getIdToken(true);
-
-    await submitToBackend({
-      idToken,
-      ...pendingSubmission,
-    });
-
-    await handleSuccessfulSubmission(pendingSubmission.category);
-
-    return true;
-  }
-
-  async function completeEmailLinkSignInIfPresent() {
-    if (!isSignInWithEmailLink(auth, window.location.href)) return;
-
-    setLoading(true, "VERIFYING...");
-
-    try {
-      const email = localStorage.getItem("email_for_sign_in");
-
-      if (!email) {
-        throw new Error(
-          "Could not find the email used to submit the form. Please submit the form again."
-        );
-      }
-
-      const userCredential = await signInWithEmailLink(
-        auth,
-        email,
-        window.location.href
-      );
-
-      const pendingSubmission = getPendingSubmission();
-
-      if (!pendingSubmission) {
-        showNotification(
-          "success",
-          "Email Verified",
-          "Your email has been verified. Please submit your message again."
-        );
-
-        window.history.replaceState({}, document.title, window.location.pathname);
-        return;
-      }
-
-      const idToken = await userCredential.user.getIdToken(true);
-
-      await submitToBackend({
-        idToken,
-        ...pendingSubmission,
-      });
-
-      await handleSuccessfulSubmission(pendingSubmission.category);
-
-      window.history.replaceState({}, document.title, window.location.pathname);
-    } catch (error) {
-      showNotification(
-        "error",
-        "Verification Failed",
-        error.message || "Could not complete email verification."
-      );
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function createUserAndSendVerification(email) {
-    const normalizedEmail = normalizeEmail(email);
-    const password = createRandomPassword();
-
-    localStorage.setItem(getStoredPasswordKey(normalizedEmail), password);
-
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      normalizedEmail,
-      password
-    );
-
-    await sendEmailVerification(userCredential.user);
-
-    showNotification(
-      "info",
-      "Verification Required",
-      "We’ve sent a verification link to your email. Please verify your email, then come back and submit the form again. Once verified, your message will be sent immediately."
-    );
-  }
-
-  async function resendVerificationForExistingUser(email) {
-    const normalizedEmail = normalizeEmail(email);
-    const password = localStorage.getItem(getStoredPasswordKey(normalizedEmail));
-
-    if (!password) {
-      showNotification(
-        "info",
-        "Verification Already Started",
-        "This email has already started verification. Please check your inbox or spam folder for the verification email. If you used another device or browser, restart with a different email or use the secure link when prompted."
-      );
-      return;
-    }
-
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      normalizedEmail,
-      password
-    );
-
-    await userCredential.user.reload();
-
-    if (userCredential.user.emailVerified) {
-      const pendingSubmission = getPendingSubmission();
-
-      if (!pendingSubmission) {
-        showNotification(
-          "success",
-          "Email Verified",
-          "Your email has been verified. Please submit your message again."
-        );
-        return;
-      }
-
-      const idToken = await userCredential.user.getIdToken(true);
-
-      await submitToBackend({
-        idToken,
-        ...pendingSubmission,
-      });
-
-      await handleSuccessfulSubmission(pendingSubmission.category);
-      return;
-    }
-
-    await sendEmailVerification(userCredential.user);
-
-    showNotification(
-      "info",
-      "Verification Sent Again",
-      "Your email is not verified yet. We’ve sent another verification link. Please check your inbox or spam folder."
-    );
-  }
-
-  async function sendPasswordlessSignInLink(email) {
-    const normalizedEmail = normalizeEmail(email);
-
-    await sendSignInLinkToEmail(auth, normalizedEmail, actionCodeSettings);
-
-    localStorage.setItem("email_for_sign_in", normalizedEmail);
-
-    showNotification(
-      "info",
-      "Secure Confirmation Sent",
-      "This email is already verified. We’ve sent you a secure confirmation link — please check your inbox and click it to complete your submission."
-    );
   }
 
   if (form) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      setLoading(true);
+      setLoading(true, "SENDING...");
 
       try {
         const formData = new FormData(form);
@@ -1277,39 +1039,14 @@ from pleading to praise, from lack to knowing who you are.</p>
           return;
         }
 
-        const submission = {
+        await submitToBackend({
           name,
           email,
           category,
           message,
-        };
+        });
 
-        savePendingSubmission(submission);
-
-        const status = await checkEmailStatus(email);
-
-        if (status.nextAction === "CREATE_AND_VERIFY") {
-          await createUserAndSendVerification(email);
-          return;
-        }
-
-        if (status.nextAction === "VERIFY_EMAIL") {
-          await resendVerificationForExistingUser(email);
-          return;
-        }
-
-        if (status.nextAction === "SIGN_IN_LINK") {
-          const submittedImmediately = await submitVerifiedLocalUser(email);
-
-          if (submittedImmediately) {
-            return;
-          }
-
-          await sendPasswordlessSignInLink(email);
-          return;
-        }
-
-        throw new Error("Unknown email status. Please try again.");
+        await handleSuccessfulSubmission(category);
       } catch (error) {
         showNotification(
           "error",
@@ -1429,8 +1166,6 @@ from pleading to praise, from lack to knowing who you are.</p>
       });
     });
   });
-
-  completeEmailLinkSignInIfPresent();
 </script>
 </script>
 </body></html>
