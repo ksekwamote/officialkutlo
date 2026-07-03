@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BES5K3HT70"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BES5K3HT70');
+  </script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0A0A0A">
+
+  <title>Kutlo | Prayer Library</title>
+  <meta name="title" content="Kutlo | Prayer Library">
+  <meta name="description" content="A growing library of prayers by Kutlo — written down so you can return to them, copy them, and pray them again.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://officialkutlo.com/prayer_library.html">
+  <meta property="og:title" content="Kutlo | Prayer Library">
+  <meta property="og:description" content="Prayers for the moments you don't have words.">
+  <meta property="og:image" content="https://officialkutlo.com/assets/im-not-a-beggar-hero.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+  <link rel="preload" href="/assets/fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/BebasNeue-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/assets/fonts/Epilogue-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    @font-face {
+      font-family: "Bebas Neue";
+      src: url("/assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Epilogue";
+      src: url("/assets/fonts/Epilogue-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Epilogue";
+      src: url("/assets/fonts/Epilogue-SemiBold.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Epilogue";
+      src: url("/assets/fonts/Epilogue-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Epilogue";
+      src: url("/assets/fonts/Epilogue-ExtraBold.woff2") format("woff2");
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("/assets/fonts/Inter-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("/assets/fonts/Inter-SemiBold.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#d4af37",
+            "primary": "#f2ca50",
+            "background": "#0A0A0A",
+            "surface": "#121414",
+            "surface-dim": "#121414",
+            "surface-container": "#1e2020",
+            "surface-container-low": "#1a1c1c",
+            "surface-container-high": "#282a2b",
+            "on-background": "#e2e2e2",
+            "on-surface": "#e2e2e2",
+            "on-surface-variant": "#d0c5af",
+            "outline": "#99907c",
+            "outline-variant": "#4d4635"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "section-gap": "128px"
+          },
+          fontFamily: {
+            "headline-lg": ["Epilogue"],
+            "headline-md": ["Epilogue"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-display": ["Epilogue"],
+            "label-sm": ["Inter"],
+            "bebas": ["Bebas Neue", "sans-serif"]
+          },
+          fontSize: {
+            "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "headline-display": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body { overflow-x: hidden; }
+    body {
+      background-color: #0A0A0A;
+      color: #e2e2e2;
+    }
+    ::selection {
+      background: #d4af37;
+      color: #0A0A0A;
+    }
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCWNDtbbToQEsq8A6HnpY0dEWaVVYOGEyXN_-zJyHo7hcL7RH4FdX7sAEDwLdkEszoV0Pk6NaHP5nJ_4dBWoZyhu6TNNMU3AKAhRBtK82axVaazHRETWf7u3fF07WbJac37LWddGnwh-50cgBx6itgZrxsPmZqXFyd58A0hgYnLOSIQhdCXJAt6hXxhVaH2tKQSZk8z8HXxNCAX4qpXfltXaWEsIodLtDgzWf75ZEfSFTx2sWCbxvIvlq3ayrwRwi6-XTsDFsfubLw)
+    }
+    .glass-card {
+      background: rgba(18, 18, 18, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .prayer-card {
+      background:
+        linear-gradient(180deg, rgba(212,175,55,0.06), rgba(255,255,255,0.015)),
+        rgba(18,18,18,0.42);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform .45s ease, border-color .45s ease, background .45s ease;
+    }
+    .prayer-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,175,55,0.35);
+      background:
+        linear-gradient(180deg, rgba(212,175,55,0.10), rgba(255,255,255,0.02)),
+        rgba(18,18,18,0.55);
+    }
+    .pill.active {
+      background: #d4af37;
+      color: #0A0A0A;
+      border-color: #d4af37;
+    }
+    .prayer-body {
+      max-height: 188px;
+      overflow: hidden;
+      position: relative;
+    }
+    .prayer-body::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 70px;
+      background: linear-gradient(to bottom, transparent, rgba(10,10,10,0.98));
+    }
+    .prayer-card.expanded .prayer-body {
+      max-height: none;
+    }
+    .prayer-card.expanded .prayer-body::after {
+      display: none;
+    }
+    .copybtn.copied {
+      background: rgba(212,175,55,1);
+      color: #0A0A0A;
+      border-color: rgba(212,175,55,1);
+    }
+    @media (max-width: 480px) {
+      .tracking-\[0\.5em\], .tracking-\[0\.4em\], .tracking-\[0\.3em\] {
+        letter-spacing: 0.16em !important;
+      }
+      h1, h2 { overflow-wrap: anywhere; }
+    }
+  </style>
+</head>
+
+<body class="font-body-md bg-background text-on-background selection:bg-primary-container selection:text-black">
+<div class="film-grain"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-white/10">
+  <div class="flex justify-between items-center px-5 md:px-12 py-4">
+    <a href="index.html" class="text-lg font-light tracking-[0.3em] text-[#D4AF37] uppercase">
+      KUTLO
+    </a>
+
+    <div class="hidden md:flex gap-12">
+      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-white/60 hover:text-white transition-colors duration-500" href="index.html">Home</a>
+      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-white/60 hover:text-white transition-colors duration-500" href="about.html">About</a>
+      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-white/60 hover:text-white transition-colors duration-500" href="music.html">Music</a>
+      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-[#D4AF37] border-b border-[#D4AF37] pb-1 hover:text-white transition-colors duration-500" href="prayer_library.html">Prayer Library</a>
+      <a class="font-epilogue tracking-[0.2em] uppercase text-[10px] font-medium text-white/60 hover:text-white transition-colors duration-500" href="index.html#contacts">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="index.html#contacts" class="font-epilogue tracking-[0.2em] uppercase text-[9px] sm:text-[10px] font-medium text-[#D4AF37] border border-[#D4AF37]/30 px-4 sm:px-6 py-2 hover:bg-[#D4AF37] hover:text-black transition-all duration-300">
+        Booking
+      </a>
+      <button id="mobile-menu-button" class="md:hidden text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-2 hover:bg-[#D4AF37] hover:text-black transition-all duration-300" type="button" aria-label="Open menu" aria-expanded="false">
+        <span id="mobile-menu-icon" class="material-symbols-outlined text-[22px]">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0A0A0A]/95 backdrop-blur-xl px-5 py-6">
+    <div class="flex flex-col gap-5">
+      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-white/60 hover:text-white transition-colors" href="index.html">Home</a>
+      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-white/60 hover:text-white transition-colors" href="about.html">About</a>
+      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-white/60 hover:text-white transition-colors" href="music.html">Music</a>
+      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-[#D4AF37]" href="prayer_library.html">Prayer Library</a>
+      <a class="font-epilogue tracking-[0.25em] uppercase text-[11px] font-medium text-white/60 hover:text-white transition-colors" href="index.html#contacts">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="relative min-h-[72vh] flex items-center overflow-hidden bg-[#120b07] pt-32 pb-16">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(212,175,55,0.20),transparent_36%),linear-gradient(135deg,#0A0A0A_0%,#1a0f09_45%,#3b2115_100%)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 md:via-black/55 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/25"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full">
+    <div class="max-w-4xl">
+      <p class="text-primary-container font-label-sm tracking-[0.45em] uppercase mb-6">
+        Prayer Library
+      </p>
+
+      <h1 class="font-bebas text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] leading-[0.86] tracking-tight text-white mb-8">
+        PRAYERS FOR <br />
+        THE WEEK
+      </h1>
+
+      <p class="text-white/70 font-body-lg max-w-2xl leading-relaxed tracking-wide">
+        A growing collection of the prayers prayed over you on TikTok and Live — written down, so you can return to them, copy them, and pray them again whenever you need to.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a href="#prayers" class="px-9 py-4 bg-primary-container text-black font-label-sm uppercase tracking-[0.25em] hover:bg-white transition-all duration-500 shadow-[0_0_28px_rgba(212,175,55,0.22)] inline-flex items-center gap-3">
+          Browse Prayers <span>→</span>
+        </a>
+        <span class="text-white/40 font-label-sm tracking-[0.25em] uppercase">Week of 28 June</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Filter -->
+<section id="prayers" class="py-16 md:py-24 bg-background">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10">
+      <div>
+        <span class="text-primary-container font-label-sm tracking-[0.5em] uppercase block mb-4">Latest Prayers</span>
+        <h2 class="font-headline-lg text-3xl sm:text-4xl md:text-5xl text-white">THIS WEEK'S PRAYERS</h2>
+      </div>
+
+      <div class="flex flex-wrap gap-3" id="filterbar">
+        <button class="pill active border border-white/10 text-[10px] font-label-sm tracking-[0.22em] uppercase px-5 py-3 text-white/60 hover:text-white transition-all" data-filter="all">All</button>
+        <button class="pill border border-white/10 text-[10px] font-label-sm tracking-[0.22em] uppercase px-5 py-3 text-white/60 hover:text-white transition-all" data-filter="week">New Week</button>
+        <button class="pill border border-white/10 text-[10px] font-label-sm tracking-[0.22em] uppercase px-5 py-3 text-white/60 hover:text-white transition-all" data-filter="family">Family</button>
+        <button class="pill border border-white/10 text-[10px] font-label-sm tracking-[0.22em] uppercase px-5 py-3 text-white/60 hover:text-white transition-all" data-filter="protection">Protection</button>
+        <button class="pill border border-white/10 text-[10px] font-label-sm tracking-[0.22em] uppercase px-5 py-3 text-white/60 hover:text-white transition-all" data-filter="newmonth">New Month</button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8" id="cardgrid">
+
+      <!-- 28 June -->
+      <article class="prayer-card rounded-lg p-7 md:p-8" data-cat="week declaration">
+        <div class="flex items-center justify-between gap-6 mb-6">
+          <div>
+            <p class="text-primary-container font-label-sm tracking-[0.35em] uppercase mb-3">28 June</p>
+            <h3 class="font-headline-md text-white text-2xl">New Week Prayer</h3>
+          </div>
+          <span class="material-symbols-outlined text-primary-container/60 text-3xl">calendar_month</span>
+        </div>
+
+        <div class="prayer-body text-white/60 leading-loose font-body-md space-y-4">
+          <p>I command the days ahead of me to align themselves with the will of God.</p>
+          <p><strong class="text-white/80">Monday</strong> — I command you to hear the voice of the Lord. Every promise God has spoken concerning my life shall begin to find fulfillment in you.</p>
+          <p><strong class="text-white/80">Tuesday</strong> — I declare that the favor of the Lord shall surround me like a shield. Doors that no man can shut shall be opened before me.</p>
+          <p><strong class="text-white/80">Wednesday</strong> — Let the glory of the Lord shine upon my life. Let His light expose every hidden blessing and every opportunity prepared for me.</p>
+          <p><strong class="text-white/80">Thursday</strong> — I command you to obey the Word of the Lord concerning my destiny. Every divine appointment assigned for me shall not pass me by.</p>
+          <p><strong class="text-white/80">Friday</strong> — You belong to the Lord. I declare victory over every battle, success in every assignment, and peace in every decision.</p>
+          <p><strong class="text-white/80">Saturday</strong> — Let it be a day of restoration, refreshing, and renewed strength. May the joy of the Lord fill my heart, and may I testify of His goodness.</p>
+          <p><strong class="text-white/80">Sunday</strong> — I dedicate you to the Lord. May I encounter His presence in a fresh way. Let my spirit be renewed, my faith strengthened, and my heart anchored in Christ.</p>
+          <p>Father, I declare that every day of this week shall work together for my good.</p>
+          <p>No weapon formed against me shall prosper. No evil shall overtake me. No plan of the enemy shall prevail.</p>
+          <p>This week shall testify of Your goodness, Your mercy, and Your faithfulness.</p>
+          <p>In Jesus' mighty name, Amen.</p>
+        </div>
+
+        <div class="pt-7 mt-7 border-t border-white/10 flex items-center justify-between gap-4">
+          <button class="expandbtn text-white/40 hover:text-primary-container font-label-sm tracking-[0.25em] uppercase transition-colors" onclick="togglePrayer(this)">Read More</button>
+          <button class="copybtn border border-primary-container/30 px-5 py-3 text-primary-container hover:bg-primary-container hover:text-black font-label-sm tracking-[0.22em] uppercase transition-all" onclick="copyPrayer(this)">Copy</button>
+        </div>
+      </article>
+
+      <!-- 29 June -->
+      <article class="prayer-card rounded-lg p-7 md:p-8" data-cat="family protection warfare">
+        <div class="flex items-center justify-between gap-6 mb-6">
+          <div>
+            <p class="text-primary-container font-label-sm tracking-[0.35em] uppercase mb-3">29 June</p>
+            <h3 class="font-headline-md text-white text-2xl">Lord Protect My Family</h3>
+          </div>
+          <span class="material-symbols-outlined text-primary-container/60 text-3xl">shield</span>
+        </div>
+
+        <div class="prayer-body text-white/60 leading-loose font-body-md space-y-4">
+          <p>Lord, protect my family. Let your presence stand guard over us, and let no weapon formed against us prosper. Contend with those who contend with us. Fight for us, O God, and let us hold our peace.</p>
+          <p>Every altar raised against my family, every assignment from the pit of darkness, be destroyed and canceled in the name of Jesus.</p>
+          <p>I come against every evil pattern operating in my bloodline — patterns of untimely death, patterns of sickness, patterns of disappointment, poverty, stagnation, unemployment, and delay.</p>
+          <p>By the authority given to me in the name of Jesus, I declare that it ends with me. I plead the blood of Jesus over the doorposts of our home. Let every spirit of destruction pass over us. None of us will die before our time.</p>
+          <p>We will live to see the goodness of the Lord in the land of the living. We will live to fulfill our destinies.</p>
+          <p>Father, let peace rule in our household. Let unity dwell among us. Let joy be our portion.</p>
+          <p>Let success follow us wherever we go. Let everything our hands touch prosper. For you have declared in your word, you will be saved, you and your household. And by the authority of that word, I declare my family is saved. My family is covered.</p>
+        </div>
+
+        <div class="pt-7 mt-7 border-t border-white/10 flex items-center justify-between gap-4">
+          <button class="expandbtn text-white/40 hover:text-primary-container font-label-sm tracking-[0.25em] uppercase transition-colors" onclick="togglePrayer(this)">Read More</button>
+          <button class="copybtn border border-primary-container/30 px-5 py-3 text-primary-container hover:bg-primary-container hover:text-black font-label-sm tracking-[0.22em] uppercase transition-all" onclick="copyPrayer(this)">Copy</button>
+        </div>
+      </article>
+
+      <!-- 30 June -->
+      <article class="prayer-card rounded-lg p-7 md:p-8" data-cat="newmonth season declaration">
+        <div class="flex items-center justify-between gap-6 mb-6">
+          <div>
+            <p class="text-primary-container font-label-sm tracking-[0.35em] uppercase mb-3">30 June</p>
+            <h3 class="font-headline-md text-white text-2xl">As I Enter July</h3>
+          </div>
+          <span class="material-symbols-outlined text-primary-container/60 text-3xl">wb_sunny</span>
+        </div>
+
+        <div class="prayer-body text-white/60 leading-loose font-body-md space-y-4">
+          <p>I refuse to enter the second half of this year carrying the weight of the first.</p>
+          <p>July, hear the voice of the Lord concerning me — I will not leave this month the same way I entered it.</p>
+          <p>As I step into the second half of this year, I declare that the grace of God goes before me. Every disappointment, every delay, every unanswered prayer from the months behind me shall not define the months ahead of me.</p>
+          <p>Father, I thank You because You are the God of new beginnings. What I could not accomplish in the first half, let Your hand accelerate in the second. Redeem every wasted opportunity. Restore every lost season. Let July become the turning point of my testimony.</p>
+          <p>I command this month to align with the will of God concerning my life. July, you will not work against me — you will work for me. Every day shall carry favor. Every week shall produce fruit. Every opportunity ordained by Heaven shall locate me.</p>
+          <p>I decree that I will not walk in fear, confusion, stagnation, or defeat. I walk in wisdom. I walk in discernment. I walk in divine health, supernatural provision, and uncommon peace.</p>
+          <p>Father, let every closed door that carries my name be opened. Let every promise You have spoken begin to manifest. Let July be marked by answered prayers, divine encounters, supernatural acceleration, and undeniable breakthroughs.</p>
+          <p>I enter this new season with boldness, not because of my strength, but because the Lord goes before me. The second half of this year shall be greater than the first. I will laugh again. I will testify again. I will see the goodness of the Lord in the land of the living.</p>
+          <p>In Jesus' name, Amen.</p>
+        </div>
+
+        <div class="pt-7 mt-7 border-t border-white/10 flex items-center justify-between gap-4">
+          <button class="expandbtn text-white/40 hover:text-primary-container font-label-sm tracking-[0.25em] uppercase transition-colors" onclick="togglePrayer(this)">Read More</button>
+          <button class="copybtn border border-primary-container/30 px-5 py-3 text-primary-container hover:bg-primary-container hover:text-black font-label-sm tracking-[0.22em] uppercase transition-all" onclick="copyPrayer(this)">Copy</button>
+        </div>
+      </article>
+
+      <!-- 01 July -->
+      <article class="prayer-card rounded-lg p-7 md:p-8" data-cat="family protection children">
+        <div class="flex items-center justify-between gap-6 mb-6">
+          <div>
+            <p class="text-primary-container font-label-sm tracking-[0.35em] uppercase mb-3">01 July</p>
+            <h3 class="font-headline-md text-white text-2xl">Lord Protect My Children</h3>
+          </div>
+          <span class="material-symbols-outlined text-primary-container/60 text-3xl">family_restroom</span>
+        </div>
+
+        <div class="prayer-body text-white/60 leading-loose font-body-md space-y-4">
+          <p>Lord, protect my children. Cover them under the shadow of your wings. Shield them from the hidden dangers of this world, from what is seen and what is unseen.</p>
+          <p>Guard them from negative influences, from sudden tragedies, and from anything sent to harm them. With all that is happening in the world today, I set these ones apart before you, Lord.</p>
+          <p>Keep them for yourself. Preserve their lives until they have fulfilled their purpose in this world. I anoint them with the oil of gladness. Let nothing steal their peace. Let nothing rob them of their innocence.</p>
+          <p>Father, I pray that you protect my sons and daughters from every predator, from those who would seek to harm them physically, emotionally, or sexually.</p>
+          <p>Let your presence be their defense. Let your hand be their covering. Let no evil come near them or before them.</p>
+          <p>I pray that you guard their minds, their hearts, and their destinies. Silence every voice that seeks to lead them astray, voices that would corrupt, confuse, or misdirect them.</p>
+          <p>Let no influence steal their purpose or plunge them into darkness. Lord, I cover these ones with the promises of Psalm 91, and I declare that with long life you will satisfy them and show them your salvation.</p>
+        </div>
+
+        <div class="pt-7 mt-7 border-t border-white/10 flex items-center justify-between gap-4">
+          <button class="expandbtn text-white/40 hover:text-primary-container font-label-sm tracking-[0.25em] uppercase transition-colors" onclick="togglePrayer(this)">Read More</button>
+          <button class="copybtn border border-primary-container/30 px-5 py-3 text-primary-container hover:bg-primary-container hover:text-black font-label-sm tracking-[0.22em] uppercase transition-all" onclick="copyPrayer(this)">Copy</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon / Book Teaser -->
+<section class="py-20 md:py-section-gap bg-surface-dim relative overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-primary-container to-transparent opacity-30"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(212,175,55,0.10),transparent_35%)]"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 text-center">
+    <span class="text-primary-container font-label-sm tracking-[0.5em] uppercase block mb-8">
+      Coming Soon
+    </span>
+
+    <h2 class="font-headline-lg text-3xl sm:text-4xl md:text-5xl text-white leading-tight">
+      These prayers, gathered into one book
+    </h2>
+
+    <p class="text-white/55 font-body-lg leading-relaxed max-w-2xl mx-auto mt-8">
+      Organized by season — protection, restoration, remembrance, warfare — with space to write your own declarations alongside mine. Be the first to know when it releases.
+    </p>
+
+    <form class="mt-12 flex flex-col sm:flex-row gap-4 max-w-xl mx-auto" onsubmit="return notify(event)">
+      <input
+        type="email"
+        name="email"
+        placeholder="Your email address"
+        required
+        class="flex-1 bg-transparent border border-white/10 focus:border-primary-container focus:ring-0 text-white px-5 py-4 outline-none placeholder:text-white/25"
+      />
+      <button type="submit" class="bg-primary-container text-black px-8 py-4 font-label-sm tracking-[0.25em] uppercase hover:bg-white transition-all">
+        Notify Me →
+      </button>
+    </form>
+
+    <div class="hidden mt-6 text-primary-container font-body-md" id="confirm">
+      You're on the list — I'll let you know the moment it's ready.
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="w-full pt-32 pb-16 bg-[#0A0A0A] flex flex-col items-center gap-8 md:gap-12 max-w-7xl mx-auto px-8">
+  <div class="border-t border-white/5 w-1/3 mx-auto"></div>
+
+  <div class="flex flex-wrap justify-center gap-10 lg:gap-16">
+    <a class="font-epilogue text-[9px] tracking-[0.4em] uppercase text-white/30 hover:text-[#D4AF37] transition-all duration-700" href="#">Privacy</a>
+    <a class="font-epilogue text-[9px] tracking-[0.4em] uppercase text-white/30 hover:text-[#D4AF37] transition-all duration-700" href="#">Press Kit</a>
+    <a class="font-epilogue text-[9px] tracking-[0.4em] uppercase text-white/30 hover:text-[#D4AF37] transition-all duration-700" href="index.html#contacts">Inquiries</a>
+  </div>
+
+  <div class="text-center space-y-4">
+    <p class="font-epilogue text-[9px] tracking-[0.4em] uppercase text-white/40">© 2026 KUTLO . DIGITAL X .</p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-6 sm:gap-8 mt-4">
+    <a href="https://www.youtube.com/@OfficialKutlo" target="_blank" rel="noopener noreferrer" class="font-epilogue text-[9px] tracking-[0.3em] uppercase text-white/30 hover:text-[#D4AF37] transition-all duration-700">YouTube</a>
+    <a href="https://www.tiktok.com/@officialkutlo" target="_blank" rel="noopener noreferrer" class="font-epilogue text-[9px] tracking-[0.3em] uppercase text-white/30 hover:text-[#D4AF37] transition-all duration-700">TikTok</a>
+    <a href="https://www.instagram.com/officialkutlo_/" target="_blank" rel="noopener noreferrer" class="font-epilogue text-[9px] tracking-[0.3em] uppercase text-white/30 hover:text-[#D4AF37] transition-all duration-700">Instagram</a>
+    <a href="https://open.spotify.com/artist/7lR2217Qc4945RnF3PDSuI" target="_blank" rel="noopener noreferrer" class="font-epilogue text-[9px] tracking-[0.3em] uppercase text-white/30 hover:text-[#D4AF37] transition-all duration-700">Spotify</a>
+  </div>
+</footer>
+
+<script>
+  function togglePrayer(btn) {
+    const card = btn.closest('.prayer-card');
+    card.classList.toggle('expanded');
+    btn.textContent = card.classList.contains('expanded') ? 'Show Less' : 'Read More';
+  }
+
+  function copyPrayer(btn) {
+    const card = btn.closest('.prayer-card');
+    const title = card.querySelector('h3').innerText;
+    const body = Array.from(card.querySelectorAll('.prayer-body p')).map(p => p.innerText).join('\n\n');
+    navigator.clipboard.writeText(title + '\n\n' + body).catch(()=>{});
+    btn.classList.add('copied');
+    btn.textContent = 'Copied';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.textContent = 'Copy';
+    }, 2200);
+  }
+
+  function notify(e) {
+    e.preventDefault();
+    document.getElementById('confirm').classList.remove('hidden');
+    e.target.reset();
+    return false;
+  }
+
+  document.querySelectorAll('#filterbar .pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#filterbar .pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+
+      document.querySelectorAll('#cardgrid .prayer-card').forEach(card => {
+        const cats = card.dataset.cat.split(' ');
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? 'block' : 'none';
+      });
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+
+    if (!mobileMenuButton || !mobileMenu) return;
+
+    mobileMenuButton.addEventListener("click", function () {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+
+      mobileMenu.classList.toggle("hidden");
+      mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+
+      if (mobileMenuIcon) {
+        mobileMenuIcon.textContent = isOpen ? "menu" : "close";
+      }
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileMenu.classList.add("hidden");
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+
+        if (mobileMenuIcon) {
+          mobileMenuIcon.textContent = "menu";
+        }
+      });
+    });
+  });
+
+  async function notify(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value.trim();
+
+    try {
+      const response = await fetch("https://submitbookemail-exo3s4zooq-uc.a.run.app", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email}),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.error || "Something went wrong.");
+        return false;
+      }
+
+      alert("Thank you. You’ll be the first to know when it releases.");
+      form.reset();
+
+      return false;
+    } catch (error) {
+      console.error(error);
+      alert("Could not submit your email. Please try again.");
+      return false;
+    }
+  }
+</script>
+
+</body>
+</html>
